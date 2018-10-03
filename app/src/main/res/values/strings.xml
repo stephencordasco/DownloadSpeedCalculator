@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MiniApp1</string>
+    <string name="network_speed">Network Speed (Mbps): </string>
+    <string name="file_size">File Size (MiB): </string>
+    <string name="transfer_time">Transfer Time: %.1f</string>
+    <string name="edit_text_hint">Enter a number</string>
+</resources>
