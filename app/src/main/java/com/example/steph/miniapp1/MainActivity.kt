@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 
-import java.text.DecimalFormat
+//import java.text.DecimalFormat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     fun calculateTransferTime() {
         // reference to member variables
-        val precision = DecimalFormat("0.0")
+        //val precision = DecimalFormat("0.0")
 
         // check if the fields are empty
         if (networkSpeedET.text.toString() == "") {
@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity() {
                 (Math.pow(2.0, 20.0) * 8)
 
         // store the transfer time
-        val transferTime = fSize / nSpeed
+        //val transferTime = fSize / nSpeed
 
         // display the transfer time
-        transferTimeTV2.text = precision.format(transferTime).toString()
+        transferTimeTV2.showConversion(nSpeed, fSize)
     }
 }
