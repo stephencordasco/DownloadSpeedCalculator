@@ -1,15 +1,13 @@
 package com.example.steph.miniapp1
 
+import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import kotlinx.android.synthetic.main.fragment_transfer_speed.*
-import kotlinx.android.synthetic.main.fragment_transfer_speed.view.*
+import com.example.steph.miniapp1.databinding.FragmentTransferSpeedBinding
 
 class TransferSpeedFragment : Fragment() {
 
@@ -19,13 +17,21 @@ class TransferSpeedFragment : Fragment() {
         }
     }
 
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(SimpleViewModel::class.java)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val rootView = inflater.inflate(R.layout.fragment_transfer_speed, container, false)
+        val binding: FragmentTransferSpeedBinding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_transfer_speed, container, false)
+
+        binding.viewmodel = viewModel
 
         // update the conversion
-        rootView.networkSpeedET.addTextChangedListener(object : TextWatcher {
+        /*rootView.networkSpeedET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
             }
@@ -51,12 +57,12 @@ class TransferSpeedFragment : Fragment() {
             override fun afterTextChanged(s: Editable) {
                 calculateTransferTime()
             }
-        })
+        })*/
 
         return rootView
     }
 
-    fun calculateTransferTime() {
+    /*fun calculateTransferTime() {
         // prevent null pointer exception
         if (networkSpeedET.text.toString() == "") {
             networkSpeedET.setText("0")
@@ -73,5 +79,5 @@ class TransferSpeedFragment : Fragment() {
 
         // display the transfer time
         transferTimeTV2.showConversion(nSpeed, fSize)
-    }
+    }*/
 }
